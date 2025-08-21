@@ -837,6 +837,132 @@
             wait-ms = <0>;
             bindings = <&macro_tap>, <&kp DOT &kp DOT>;
         };
+
+        meh: meh_hyper {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT &kp LCTRL &kp LEFT_ALT &macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_release>,
+                <&kp LSHFT &kp LCTRL &kp LALT>;
+
+            label = "MEH_HYPER";
+            tap-ms = <30>;
+        };
+
+        hyper: hyper {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT &kp LCTRL &kp LEFT_ALT &kp LGUI &macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_release>,
+                <&kp LSHFT &kp LCTRL &kp LALT &kp LGUI>;
+
+            label = "HYPER";
+            tap-ms = <30>;
+        };
+
+        dictate: dictate {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&mt RGUI RG(SPACE)>;
+            label = "DICTATE";
+            tap-ms = <30>;
+            wait-ms = <100>;
+        };
+
+        launcher: launcher {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(SPACE)>;
+            label = "LAUNCHER";
+        };
+
+        copy: copy {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(C)>;
+            label = "COPY";
+        };
+
+        copy_plus: copy_plus {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(C))>;
+            label = "COPY_PLUS";
+        };
+
+        paste: paste {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(V)>;
+            label = "PASTE";
+        };
+
+        paste_plus: paste_plus {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(V))>;
+            label = "PASTE_PLUS";
+        };
+
+        cap_screen: cap_screen {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LG(NUMBER_3))>;
+            label = "CAP_SCREEN";
+        };
+
+        cap_window: cap_window {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LG(NUMBER_4))>;
+            label = "CAP_WINDOW";
+        };
+
+        cap_all_in_one: cap_all_in_one {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LG(N5))>;
+            label = "CAP_ALL_IN_ONE";
+        };
+
+        screen_rec: screen_rec {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(N8))>;
+            label = "SCREEN_REC";
+        };
+
+        screen_stream: screen_stream {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LG(N7))>;
+            label = "SCREEN_STREAM";
+        };
+
+        quick_emoji: emoji_pick {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LG(SPACE))>;
+            label = "EMOJI_PICK";
+        };
+
+        quick_op: quick_password {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LG(SPACE))>;
+            label = "QUICK_PASSWORD";
+        };
+
+        meh_space: meh_space {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&meh SPACE>;
+            label = "MEH_SPACE";
+        };
     };
 };
 
@@ -1378,13 +1504,6 @@
         compatible = "zmk,combos";
 
         // toggle gaming layer - TailorKey
-
-        combo_gaming_layer_v1_TKZ {
-            timeout-ms = <50>;
-            key-positions = <51 68>;
-            bindings = <&tog 6>;
-        };
-
         // F12 on RH_C6 and RH_R1+R2 - TailorKey
 
         combo_F12_v1_TKZ {
@@ -1429,6 +1548,85 @@
             bindings = <&kp CAPS>;
             layers = <0 2>;
         };
+
+        copy {
+            bindings = <&copy>;
+            key-positions = <48 49>;
+            layers = <0 2>;
+            timeout-ms = <20>;
+        };
+
+        paste {
+            bindings = <&paste>;
+            key-positions = <49 50>;
+            layers = <0 2>;
+            timeout-ms = <20>;
+        };
+
+        copy_plus {
+            bindings = <&copy_plus>;
+            key-positions = <49 36>;
+            layers = <0 2>;
+            timeout-ms = <20>;
+        };
+
+        paste_plus {
+            bindings = <&paste_plus>;
+            key-positions = <36 50>;
+            layers = <0 2>;
+            timeout-ms = <20>;
+        };
+
+        switch_apps {
+            bindings = <&kp LG(TAB)>;
+            key-positions = <69 52>;
+            layers = <0 2>;
+            timeout-ms = <20>;
+        };
+
+        switch_windows {
+            bindings = <&kp LA(TAB)>;
+            key-positions = <69 70>;
+            timeout-ms = <20>;
+            layers = <0 2>;
+        };
+
+        sticky_meh {
+            bindings = <&sk LS(LC(LALT))>;
+            key-positions = <37 38>;
+        };
+
+        sticky_hyper {
+            bindings = <&kp LS(LC(LG(LALT)))>;
+            key-positions = <36 37 38>;
+        };
+
+        launcher {
+            bindings = <&launcher>;
+            key-positions = <41 42>;
+        };
+
+        op {
+            bindings = <&quick_op>;
+            key-positions = <42 43>;
+        };
+
+        emoji {
+            bindings = <&quick_emoji>;
+            key-positions = <43 41>;
+        };
+
+        leader_key {
+            bindings = <&kp LS(LA(LC(SPACE)))>;
+            key-positions = <43 41 42>;
+        };
+
+        ai {
+            bindings = <&hyper NUMBER_2>;
+            key-positions = <38 39>;
+            timeout-ms = <20>;
+            layers = <0 2>;
+        };
     };
 };
 
@@ -1440,12 +1638,12 @@
 
         layer_HRM_macOS {
             bindings = <
-&kp F1       &kp F2                           &kp F3                         &kp F4                          &kp F5                                                                                                                                                                                    &kp F6                            &kp F7                           &kp F8                          &kp F9                               &kp F10
-&kp EQUAL    &kp N1                           &kp N2                         &kp N3                          &kp N4                           &kp N5                                                                                                                                           &kp N6  &kp N7                            &kp N8                           &kp N9                          &kp N0                               &kp MINUS
-&kp TAB      &kp Q                            &kp W                          &kp E                           &kp R                            &kp T                                                                                                                                            &kp Y   &kp U                             &kp I                            &kp O                           &kp P                                &kp BSLH
-&kp ESC      &HRM_left_pinky_v1B_TKZ LCTRL A  &HRM_left_ring_v1B_TKZ LALT S  &HRM_left_middy_v1B_TKZ LGUI D  &HRM_left_index_v1B_TKZ LSHFT F  &kp G                                                                                                                                            &kp H   &HRM_right_index_v1B_TKZ RSHFT J  &HRM_right_middy_v1B_TKZ RGUI K  &HRM_right_ring_v1B_TKZ LALT L  &HRM_right_pinky_v1B_TKZ RCTRL SEMI  &kp SQT
-&kp GRAVE    &kp Z                            &kp X                          &kp C                           &kp V                            &kp B   &CAPSWord_v1_TKZ LSHFT MACRO_PLACEHOLDER  &kp LGUI  &lower    &kp LCTRL  &kp RGUI              &CAPSWord_v1_TKZ RSHFT MACRO_PLACEHOLDER  &kp N   &kp M                             &kp COMMA                        &kp DOT                         &kp FSLH                             &kp PG_UP
-&magic 20 0  &kp HOME                         &kp END                        &kp LEFT                        &kp RIGHT                                &thumb_v2_TKZ 3 BSPC                      &kp DEL   &kp LALT  &kp RALT   &thumb_v2_TKZ 16 RET  &space_v3_TKZ 5 SPACE                             &kp UP                            &kp DOWN                         &kp LBKT                        &kp RBKT                             &kp PG_DN
+&mt F1 C_BRI_DEC  &mt F2 C_BRI_INC                &mt F3 C_PREV                    &mt F4 C_NEXT                       &mt F5 C_PP                                                                                                                                                                                             &mt F6 C_MUTE                     &mt F7 C_VOL_DN                  &mt F8 C_VOL_UP                  &mt F9 GLOBE                        &mt F13 F10
+&mt PLUS EQUAL    &mt EXCLAMATION NUMBER_1        &mt AT_SIGN N2                   &mt HASH N3                         &mt DOLLAR NUMBER_4              &mt PERCENT N5                                                                                                                                           &mt CARET N6  &mt AMPERSAND N7                  &mt ASTERISK N8                  &mt LEFT_PARENTHESIS N9          &mt RIGHT_PARENTHESIS N0            &mt PIPE BACKSLASH
+&mt TILDE GRAVE   &kp Q                           &kp W                            &kp E                               &kp R                            &kp T                                                                                                                                                    &kp Y         &kp U                             &kp I                            &kp O                            &kp P                               &mt LA(MINUS) MINUS
+&kp ESC           &HRM_left_pinky_v1B_TKZ LGUI A  &HRM_left_ring_v1B_TKZ LSHIFT S  &HRM_left_middy_v1B_TKZ LEFT_ALT D  &HRM_left_index_v1B_TKZ LCTRL F  &kp G                                                                                                                                                    &kp H         &HRM_right_index_v1B_TKZ RCTRL J  &HRM_right_middy_v1B_TKZ RALT K  &HRM_right_ring_v1B_TKZ RSHFT L  &HRM_right_pinky_v1B_TKZ LCMD SEMI  &mt DOUBLE_QUOTES SQT
+&sk LEFT_SHIFT    &kp Z                           &kp X                            &kp C                               &kp V                            &kp B           &CAPSWord_v1_TKZ LSHFT MACRO_PLACEHOLDER  &kp LGUI  &lower    &kp LCTRL  &kp RGUI              &CAPSWord_v1_TKZ RSHFT MACRO_PLACEHOLDER  &kp N         &kp M                             &mt LESS_THAN COMMA              &mt GREATER_THAN PERIOD          &mt QUESTION SLASH                  &kp RETURN
+&magic 20 0       &kp LEFT                        &kp UP_ARROW                     &kp DOWN                            &kp RIGHT                                        &thumb_v2_TKZ 3 BSPC                      &kp TAB   &kp LALT  &kp RALT   &thumb_v2_TKZ 16 RET  &space_v3_TKZ 5 SPACE                                   &kp LEFT_PARENTHESIS              &mt LEFT_BRACE LEFT_BRACKET      &mt RIGHT_BRACE RIGHT_BRACKET    &kp RIGHT_PARENTHESIS               &magic 20 0
             >;
         };
 
@@ -1666,6 +1864,17 @@
 &bootloader    &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                   &none  &none  &none  &none  &none       &bootloader
 &sys_reset     &none            &none            &none            &none            &none            &bt_2  &bt_3  &none         &none  &none  &none  &none  &none  &none  &none  &none       &sys_reset
 &none          &none            &none            &none            &none                             &bt_0  &bt_1  &out OUT_USB  &none  &none  &none         &none  &none  &none  &none       &none
+            >;
+        };
+
+        meh_hyper {
+            bindings = <
+&meh F1     &meh F2    &meh F3  &meh F4    &meh F5                                                                            &meh F6  &meh F7     &meh F8   &meh F9    &meh F10
+&meh EQUAL  &meh N1    &meh N2  &meh N3    &meh N4     &meh N5                                                       &meh N6  &meh N7  &meh N8     &meh N9   &meh N0    &meh BSLH
+&meh GRAVE  &meh Q     &meh W   &meh E     &meh R      &meh T                                                        &meh Y   &meh U   &meh I      &meh O    &meh P     &meh MINUS
+&none       &meh A     &meh S   &meh D     &meh F      &meh G                                                        &meh H   &meh J   &meh K      &meh L    &meh SEMI  &meh SQT
+&none       &meh Z     &meh X   &meh C     &meh V      &meh B   &none  &kp LGUI  &none  &none  &none     &none       &meh N   &meh M   &meh COMMA  &meh DOT  &meh FSLH  &meh RET
+&none       &meh LEFT  &meh UP  &meh DOWN  &meh RIGHT           &none  &none     &none  &none  &meh TAB  &meh LSHFT           &none    &none       &none     &none      &none
             >;
         };
     };
